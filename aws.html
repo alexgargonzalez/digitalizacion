@@ -23,6 +23,8 @@
             align-items: center; /* Center content horizontally */
             text-align: center;
             position: relative; /* Position for the gradient overlay */
+            opacity: 1; /* Make sure it's visible on load */
+            transition: opacity 1s ease-in-out; /* Fade in effect */
         }
         /* Gradient overlay */
         header::before {
@@ -66,10 +68,12 @@
         .presentation h1 {
             font-size: 50px;
             margin-bottom: 10px;
+            color: #ffffff; /* Make text white for visibility */
         }
         .presentation p {
             font-size: 20px;
             margin-bottom: 30px;
+            color: #ffffff; /* Make text white for visibility */
         }
         .hire-button {
             padding: 15px 30px;
@@ -91,6 +95,13 @@
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             text-align: center; /* Center text in sections */
+            opacity: 0; /* Start hidden for animation */
+            transition: opacity 1s ease-in-out, transform 0.5s ease; /* Fade in and slide up effect */
+            transform: translateY(20px); /* Start slightly below */
+        }
+        section.visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Slide up */
         }
         .services {
             display: grid;
@@ -99,7 +110,7 @@
         }
         .service {
             background: #f8f9fa;
-            padding: 20px;
+            padding:  20px;
             border-radius: 15px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
@@ -173,67 +184,99 @@
     </div>
 </header>
 
-<section id="about">
-    <h2>Descripción de la Empresa</h2>
-    <p>Somos un equipo de desarrolladores web apasionados por crear soluciones digitales efectivas. Con años de experiencia en el campo, ofrecemos un enfoque personalizado para cada proyecto, asegurando que nuestros clientes obtengan resultados excepcionales.</p>
-</section>
+<main>
+    <section id="about">
+        <h2>Descripción de la Empresa</h2>
+        <p>Somos un equipo de desarrolladores web apasionados por crear soluciones digitales efectivas. Con años de experiencia en el campo, ofrecemos un enfoque personalizado para cada proyecto, asegurando que nuestros clientes obtengan resultados excepcionales.</p>
+    </section>
 
-<section id="services">
-    <h2>Servicios</h2>
-    <div class="services">
-        <div class="service">
-            <h3>Diseño de Interfaces de Usuario</h3>
-            <p> Creación de interfaces de usuario atractivas y fáciles de usar.</p>
+    <section id="services">
+        <h2>Servicios</h2>
+        <div class="services">
+            <div class="service">
+                <h3>Diseño de Interfaces de Usuario</h3>
+                <p> Creación de interfaces de usuario atractivas y fáciles de usar.</p>
+            </div>
+            <div class="service">
+                <h3>Desarrollo de Aplicaciones Web</h3>
+                <p>Creación de aplicaciones web personalizadas para tu negocio.</p>
+            </div>
+            <div class="service">
+                <h3>Optimización para Motores de Búsqueda</h3>
+                <p>Mejora de la visibilidad de tu sitio web en los motores de búsqueda.</p>
+            </div>
+            <div class="service">
+                <h3>Diseño de Experiencia de Usuario </h3>
+                <p>Creación de experiencias de usuario atractivas y fáciles de usar.</p>
+            </div>
+            <div class="service">
+                <h3>Desarrollo de Sitios Web a Medida</h3>
+                <p>Creación de sitios web personalizados para tu negocio.</p>
+            </div>
+            <div class="service">
+                <h3>Mantenimiento y Soporte Técnico</h3>
+                <p>Mantenimiento y soporte técnico para tu sitio web.</p>
+            </div>
         </div>
-        <div class="service">
-            <h3>Desarrollo de Aplicaciones Web</h3>
-            <p>Creación de aplicaciones web personalizadas para tu negocio.</p>
-        </div>
-        <div class="service">
-            <h3>Optimización para Motores de Búsqueda</h3>
-            <p>Mejora de la visibilidad de tu sitio web en los motores de búsqueda.</p>
-        </div>
-        <div class="service">
-            <h3>Diseño de Experiencia de Usuario </h3>
-            <p>Creación de experiencias de usuario atractivas y fáciles de usar.</p>
-        </div>
-        <div class="service">
-            <h3>Desarrollo de Sitios Web a Medida</h3>
-            <p>Creación de sitios web personalizados para tu negocio.</p>
-        </div>
-        <div class="service">
-            <h3>Mantenimiento y Soporte Técnico</h3>
-            <p>Mantenimiento y soporte técnico para tu sitio web.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="contact">
-    <h2>Contacto</h2>
-    <div class="contact-info">
-        <div class="contact-box">
-            <h3>Teléfono:</h3>
-            <p>+34 654 321 987</p>
+    <section id="contact">
+        <h2>Contacto</h2>
+        <div class="contact-info">
+            <div class="contact-box">
+                <h3>Teléfono:</h3>
+                <p>+34 654 321 987</p>
+            </div>
+            <div class="contact-box">
+                <h3>Correo Electrónico:</h3>
+                <p><a href="mailto:info@desarrolladorweb.com">info@desarrolladorweb.com</a ></p>
+            </div>
         </div>
-        <div class="contact-box">
-            <h3>Correo Electrónico:</h3>
-            <p><a href="mailto:info@desarrolladorweb.com">info@desarrolladorweb.com</a></p>
-        </div>
-    </div>
-    <form action="#" method="post">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
+        <form action="#" method="post">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
 
-        <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required>
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="message">Mensaje:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
 
-        <button type="submit">Enviar</button>
-    </form>
-</section>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+</main>
 
 <footer>
     <p>&copy; 2023 Desarrollador Web Profesional. Todos los derechos reservados.</p>
-</footer
+</footer>
+
+<script>
+    // Add event listener for scroll
+    window.addEventListener('scroll', () => {
+        // Get all sections
+        const sections = document.querySelectorAll('section');
+
+        // Loop through sections
+        sections.forEach((section) => {
+            // Get the top and bottom positions of the section
+            const top = section.offsetTop;
+            const bottom = top + section.offsetHeight;
+
+            // Get the current scroll position
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+            // Check if the section is in view
+            if (scrollPosition > top && scrollPosition < bottom) {
+                // Add the visible class to the section
+                section.classList.add('visible');
+            } else {
+                // Remove the visible class from the section
+                section.classList.remove('visible');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
